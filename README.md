@@ -1,2 +1,2 @@
 # CampusSystem
-ASP.NET 5 Campus system.
+ASP.NET 5 Student campus system.
