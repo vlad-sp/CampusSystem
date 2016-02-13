@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
-using Owin;
-using CampusSystem.Web.Models;
-using CampusSystem.Data.Models;
-using CampusSystem.Data;
-
-namespace CampusSystem.Web
+﻿namespace CampusSystem.Web
 {
+    using System;
+    using CampusSystem.Data;
+    using CampusSystem.Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security.Cookies;
+    using Owin;
+
     public partial class Startup
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
