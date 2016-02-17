@@ -1,4 +1,4 @@
-﻿namespace CampusSystem.Web.Mapping
+﻿namespace CampusSystem.Web.Infrastructure.Mapping
 {
     public interface IMapFrom<T>
        where T : class

@@ -1,4 +1,4 @@
-﻿namespace CampusSystem.Web.Mapping
+﻿namespace CampusSystem.Web.Infrastructure.Mapping
 {
     using System;
     using System.Collections.Generic;
