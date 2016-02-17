@@ -45,18 +45,18 @@
             builder.Register(x => new CampusSystemDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();
-            //builder.Register(x => new HttpCacheService())
+
+            // builder.Register(x => new HttpCacheService())
             //    .As<ICacheService>()
             //    .InstancePerRequest();
-            //builder.Register(x => new IdentifierProvider())
+            // builder.Register(x => new IdentifierProvider())
             //    .As<IIdentifierProvider>()
             //    .InstancePerRequest();
-
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
-            //builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            // builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
             //    .AssignableTo<BaseController>().PropertiesAutowired();
         }
     }
