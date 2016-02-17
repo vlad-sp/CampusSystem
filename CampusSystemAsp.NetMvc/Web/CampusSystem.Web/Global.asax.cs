@@ -12,6 +12,7 @@
         protected void Application_Start()
         {
             DatabaseConfig.Initialize();
+            AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
