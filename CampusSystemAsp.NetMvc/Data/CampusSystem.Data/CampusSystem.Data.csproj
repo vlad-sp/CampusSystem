@@ -74,6 +74,10 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CampusSystem.Data.Common\CampusSystem.Data.Common.csproj">
+      <Project>{9b8f5cc6-5223-4661-b3cb-18a771905281}</Project>
+      <Name>CampusSystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CampusSystem.Data.Models\CampusSystem.Data.Models.csproj">
       <Project>{d49fe423-17b6-4a4e-b3e8-54bf4dc70b94}</Project>
       <Name>CampusSystem.Data.Models</Name>
