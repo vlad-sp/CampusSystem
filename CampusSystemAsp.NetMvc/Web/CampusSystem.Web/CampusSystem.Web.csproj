@@ -202,6 +202,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -311,6 +312,14 @@
     <ProjectReference Include="..\..\Data\CampusSystem.Data\CampusSystem.Data.csproj">
       <Project>{812c959d-9a32-47b0-a3dc-ddc426765f01}</Project>
       <Name>CampusSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\CampusSystem.Services.Data\CampusSystem.Services.Data.csproj">
+      <Project>{498b0bfe-eee8-4a0a-b0a2-8bb01d8dc166}</Project>
+      <Name>CampusSystem.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\CampusSystem.Services.Web\CampusSystem.Services.Web.csproj">
+      <Project>{68aa159d-cbb4-44e9-b119-0bfbbc9400af}</Project>
+      <Name>CampusSystem.Services.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\CampusSystem.Web.Infrastructure\CampusSystem.Web.Infrastructure.csproj">
       <Project>{4988f00d-6ad9-46c3-ae5a-dec502d62b0d}</Project>
