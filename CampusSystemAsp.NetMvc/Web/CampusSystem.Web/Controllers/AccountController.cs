@@ -153,9 +153,12 @@
             {
                 var user = this.Mapper.Map<User>(model);
                 user.UserName = $"{user.FirstName} {user.LastName}";
+
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    this.UserManager.AddToRole(user.Id, "Student");
+
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

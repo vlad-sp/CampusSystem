@@ -5,17 +5,48 @@
     using System.Linq;
 
     using Models;
-
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity;
+    using System;
     public sealed class Configuration : DbMigrationsConfiguration<CampusSystemDbContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(CampusSystemDbContext context)
         {
+            if (!context.Roles.Any())
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var adminRole = new IdentityRole { Name = "Administrator" };
+                var studentRole = new IdentityRole { Name = "Student" };
+
+                manager.Create(adminRole);
+                manager.Create(studentRole);
+
+                var passwordHash = new PasswordHasher();
+                string password = passwordHash.HashPassword("admin");
+
+                var admin = new User
+                {
+                    UserName = "admin@site.com",
+                    Email = "admin@site.com",
+                    PasswordHash = password,
+                    SecurityStamp = Guid.NewGuid().ToString()
+                };
+                var userManager = new UserManager<User>(new UserStore<User>(context));
+
+                userManager.Create(admin);
+                userManager.AddToRole(admin.Id, "Administrator");
+
+            }
+
+           
+
             if (!context.News.Any())
             {
                 var newsList = new List<News>()
