@@ -3,12 +3,14 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
 
+    using Controllers;
     using Data;
     using Data.Common;
+    using Services.Data;
+    using Services.Web;
 
     public static class AutofacConfig
     {
@@ -46,18 +48,21 @@
                 .As<DbContext>()
                 .InstancePerRequest();
 
-            // builder.Register(x => new HttpCacheService())
-            //    .As<ICacheService>()
-            //    .InstancePerRequest();
-            // builder.Register(x => new IdentifierProvider())
-            //    .As<IIdentifierProvider>()
-            //    .InstancePerRequest();
+            builder.Register(x => new HttpCacheService())
+               .As<ICacheService>()
+               .InstancePerRequest();
+            //builder.Register(x => new IdentifierProvider())
+            //   .As<IIdentifierProvider>()
+            //   .InstancePerRequest();
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
-            // builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-            //    .AssignableTo<BaseController>().PropertiesAutowired();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+               .AssignableTo<BaseController>().PropertiesAutowired();
+
+            var servicesAssembly = Assembly.GetAssembly(typeof(INewsService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
         }
     }
 }
