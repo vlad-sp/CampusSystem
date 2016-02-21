@@ -16,6 +16,6 @@
 
         public int BuildingId { get; set; }
 
-        public ApartmentBuilding Building { get; set; }
+        public virtual ApartmentBuilding Building { get; set; }
     }
 }

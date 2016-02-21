@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201602201318584_UpdateModels.Designer.cs">
       <DependentUpon>201602201318584_UpdateModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602211620029_AddedMissingPropertyToModels.cs" />
+    <Compile Include="Migrations\201602211620029_AddedMissingPropertyToModels.Designer.cs">
+      <DependentUpon>201602211620029_AddedMissingPropertyToModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602201318584_UpdateModels.resx">
       <DependentUpon>201602201318584_UpdateModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602211620029_AddedMissingPropertyToModels.resx">
+      <DependentUpon>201602211620029_AddedMissingPropertyToModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
