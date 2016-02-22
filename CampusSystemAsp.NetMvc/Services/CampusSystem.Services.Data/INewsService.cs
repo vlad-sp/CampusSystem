@@ -5,6 +5,12 @@
 
     public interface INewsService
     {
+        IQueryable<News> GetAll();
+
         IQueryable<News> GetLatestThreeNews();
+
+        News CreateNews(News model);
+
+        void UpdateNews(News model);
     }
 }

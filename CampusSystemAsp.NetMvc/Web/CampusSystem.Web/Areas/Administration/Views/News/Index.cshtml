@@ -1,0 +1,54 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.IndexNewsViewModel
+
+@{
+    ViewBag.Title = "News Administration";
+}
+
+
+
+<div class="row">
+   <div class="col-md-offset-2 col-md-8">
+       <h2>News Admimistration</h2>
+       <a href="#" class="btn btn-primary" id="btnPartial">Add News</a>
+       <div id="partial" style="display:none">
+            @Html.Partial("_CreateNewsPartial", @Model.InputModel)
+       </div>
+   </div>
+</div>
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        @for (int i = 0; i < Model.News.Count; i++)
+        {
+            <div>
+                <h3>@Model.News[i].Title</h3> @Html.EditorFor(x => x.News[i], new {data_id = @Model.News[i].Id })
+            </div>
+            <div>
+                <p>@Model.News[i].Content</p>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#btnPartial").on("click", function () {
+            $("#partial").show(1000);
+        })
+
+        $("#cancel").on("click", function () {
+            $("#partial").hide(1000);
+        })
+
+
+        $("button[data-action='save']").on("click", function () {
+            var id = $(this).attr("data-id");
+            $.post("/Administration/News/EditNews", { model: { Id:  $(this).attr("data-id"), Title: $("#Title"+ $(this).attr("data-id")).val(), Content: $("#Content" + $(this).attr("data-id")).val() } }, function (data) {
+                console.log("News updated");
+                $("#editModal" +id).hide();
+                $('.modal-backdrop').hide();
+            })
+        })
+    </script>
+
+}

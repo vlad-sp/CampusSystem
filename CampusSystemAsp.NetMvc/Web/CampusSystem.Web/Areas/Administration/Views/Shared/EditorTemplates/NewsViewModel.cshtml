@@ -1,0 +1,22 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.NewsViewModel
+
+<a href="" class="btn btn-primary" data-toggle="modal" data-target="@("#editModal" +Model.Id)" data-id="@Model.Id">Edit</a>
+
+<div class="modal fade" id="@("editModal" +Model.Id)" role="dialog" data-id=@Model.Id>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit news</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                @Html.TextBoxFor(x => x.Title, new { value = @Model.Title, data_id = @Model.Id, id = "Title"+@Model.Id })
+            </div>
+            <div class="modal-body">
+                @Html.TextAreaFor(x => x.Content, new { value = @Model.Content, id = "Content" + @Model.Id })
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-action="save" data-id=@Model.Id>Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
