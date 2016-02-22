@@ -9,12 +9,14 @@
     {
         private readonly IDbRepository<Room> rooms;
         private readonly IDbRepository<Floor> floors;
+        private readonly IRepository<User> students;
 
 
-        public RoomService(IDbRepository<Room> rooms, IDbRepository<Floor> floors)
+        public RoomService(IDbRepository<Room> rooms, IDbRepository<Floor> floors, IRepository<User> students)
         {
             this.rooms = rooms;
             this.floors = floors;
+            this.students = students;
         }
 
         public IQueryable<Room> GetAllFreeRooms(int betsCount)
@@ -41,7 +43,8 @@
         public Room AssignUserFoorRoom(int id, string userId)
         {
             var room = this.rooms.GetById(id);
-            room.UserId = userId;
+            var student = this.students.GetById(userId);
+            room.Students.Add(student);
             this.rooms.Save();
             return room;
         }

@@ -1,4 +1,4 @@
-﻿namespace CampusSystem.Web.Areas.Administration.ViewModels
+﻿namespace CampusSystem.Web.Areas.Administration.ViewModels.News
 {
     using System.Collections.Generic;
 

@@ -5,9 +5,10 @@
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data;
-    using ViewModels;
+    using ViewModels.News;
     using Web.Controllers;
 
+    [Authorize(Roles = "Administrator")]
     public class NewsController : BaseController
     {
         private readonly INewsService news;

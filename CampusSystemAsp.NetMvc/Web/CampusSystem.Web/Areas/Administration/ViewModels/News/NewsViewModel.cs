@@ -1,7 +1,5 @@
-﻿namespace CampusSystem.Web.Areas.Administration.ViewModels
+﻿namespace CampusSystem.Web.Areas.Administration.ViewModels.News
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;

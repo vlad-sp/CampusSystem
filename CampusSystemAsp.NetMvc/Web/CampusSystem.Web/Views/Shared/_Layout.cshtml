@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+
 
 </head>
 <body>
@@ -36,7 +38,8 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("News administration", "Index", "News", new { area = "Administration" }, null)</li>
-                        <li>@Html.ActionLink("Room administration", "Index", "Room", new { area = "Administration" }, null)</li>
+                        <li>@Html.ActionLink("Building administration", "Index", "Building", new { area = "Administration" }, null)</li>
+                        <li>@Html.ActionLink("Student administration", "Index", "Student", new { area = "Administration" }, null)</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

@@ -58,6 +58,10 @@
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
+            builder.RegisterGeneric(typeof(EfGenericRepository<>))
+                .As(typeof(IRepository<>))
+                .InstancePerRequest();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                .AssignableTo<BaseController>().PropertiesAutowired();
 

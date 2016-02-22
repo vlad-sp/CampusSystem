@@ -1,4 +1,4 @@
-﻿namespace CampusSystem.Web.Areas.Administration.ViewModels
+﻿namespace CampusSystem.Web.Areas.Administration.ViewModels.News
 {
     using Data.Models;
     using Infrastructure.Mapping;

@@ -1,13 +1,14 @@
 ﻿namespace CampusSystem.Data.Migrations
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     using Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Microsoft.AspNet.Identity;
-    using System;
+
     public sealed class Configuration : DbMigrationsConfiguration<CampusSystemDbContext>
     {
         public Configuration()
@@ -27,7 +28,10 @@
 
                 manager.Create(adminRole);
                 manager.Create(studentRole);
+            }
 
+            if (!context.Users.Any())
+            {
                 var passwordHash = new PasswordHasher();
                 string password = passwordHash.HashPassword("admin");
 
@@ -42,10 +46,8 @@
 
                 userManager.Create(admin);
                 userManager.AddToRole(admin.Id, "Administrator");
-
             }
 
-           
 
             if (!context.News.Any())
             {

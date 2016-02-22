@@ -23,6 +23,10 @@
 
         public int GroupNumber { get; set; }
 
+        public int? RoomId { get; set; }
+
+        public virtual Room Room { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
