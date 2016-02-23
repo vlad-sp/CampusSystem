@@ -1,5 +1,6 @@
 ﻿namespace CampusSystem.Services.Data
 {
+    using System;
     using System.Linq;
 
     using CampusSystem.Data.Common;
@@ -18,6 +19,11 @@
         public IQueryable<User> GetAllStudents()
         {
             return this.students.All();
+        }
+
+        public User GetById(string id)
+        {
+            return this.students.GetById(id);
         }
     }
 }

@@ -18,9 +18,12 @@
 
         public ActionResult Index()
         {
+
+            var news = this.Cache.Get("news", () => this.news.GetLatestThreeNews().To<NewsViewModel>().ToList(), 30 * 60);
+
             var viewModel = new IndexViewModel()
             {
-                News = this.news.GetLatestThreeNews().To<NewsViewModel>().ToList()
+                News = news
             };
 
             return this.View(viewModel);

@@ -66,6 +66,45 @@
 
                 context.SaveChanges();
             }
+
+            if (!context.AppartmentBuildings.Any())
+            {
+                var buildingList = new List<ApartmentBuilding>()
+                {
+                    new ApartmentBuilding { Name = "Block 11", Address = "Sofia, Student city 11", CampusHostName = "Andrey Smith" },
+                    new ApartmentBuilding { Name = "Block 12", Address = "Sofia, Student city 12", CampusHostName = "Jeremy Clarckson" },
+                    new ApartmentBuilding { Name = "Block 13", Address = "Sofia, Student city 13", CampusHostName = "James May" }
+                };
+
+                foreach (var building in buildingList)
+                {
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        building.Floors.Add(new Floor() { FloorNumber = i });
+                    }
+
+                    context.AppartmentBuildings.Add(building);
+                }
+
+                context.SaveChanges();
+            }
+
+            if (!context.Rooms.Any())
+            {
+                var random = new Random();
+                var floors = context.Floors.ToList();
+
+                foreach (var floor in floors)
+                {
+                    for (int i = 1; i < 10; i++)
+                    {
+                        floor.Rooms.Add(new Room() { RoomName = $"{floor.Id}{i}", BedsCount = random.Next(1,5), HasBalcon = false, Area = random.Next(30,51)});
+                    }
+
+                    context.SaveChanges();
+                }
+
+            }
         }
     }
 }

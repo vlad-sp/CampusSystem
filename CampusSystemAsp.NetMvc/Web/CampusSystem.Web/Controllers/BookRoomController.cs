@@ -13,17 +13,22 @@
         private readonly IBuildingService buildings;
         private readonly IFloorService floors;
         private readonly IRoomService rooms;
+        private readonly IStudentService students;
+
         private IndexBookRoomViewModel viewModel = new IndexBookRoomViewModel();
 
-        public BookRoomController(IBuildingService buildings, IFloorService floors, IRoomService rooms)
+        public BookRoomController(IBuildingService buildings, IFloorService floors, IRoomService rooms, IStudentService students)
         {
             this.buildings = buildings;
             this.floors = floors;
             this.rooms = rooms;
+            this.students = students;
         }
 
         public ActionResult Index()
         {
+            var userId = this.User.Identity.GetUserId();
+            this.viewModel.UserInfo = this.students.GetById(this.User.Identity.GetUserId());
             this.viewModel.Buildings = this.buildings.GetAll().ToList();
             return this.View(this.viewModel);
         }
@@ -38,7 +43,7 @@
         [HttpPost]
         public ActionResult LoadRooms(int id = 1)
         {
-            this.viewModel.Rooms = this.rooms.GetRoomsByFloorId(id).ToList();
+            this.viewModel.Rooms = this.rooms.GetFreeRoomsByFloorId(id).ToList();
             return this.PartialView("_IndexRooms", this.viewModel);
         }
 

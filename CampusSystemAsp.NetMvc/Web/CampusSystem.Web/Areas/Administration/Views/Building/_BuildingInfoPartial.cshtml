@@ -1,0 +1,39 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.Building.IndexBuildingViewModel
+
+<h2>Building information</h2>
+<div class="panel panel-primary col-md-10">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Model.Info.Name</h3>
+    </div>
+    <div class="panel-body">
+        Address : @Model.Info.Address
+        <br />
+        Host name : @Model.Info.CampusHostName
+        <br />
+        @Html.EditorFor(x => x.Info)
+    </div>
+</div>
+
+<div class="col-md-12">
+    <h2>@Model.Info.Name statistics</h2>
+    <table class="table table-striped table-hover text-center">
+        <tr>
+            <th class="text-center">Floor number</th>
+            <th class="text-center">Rooms count</th>
+            <th class="text-center">Occupied beds</th>
+            <th class="text-center">Free beds</th>
+            <th class="text-center">Total beds</th>
+        </tr>
+        @foreach (var floor in Model.Floors)
+        {
+            <tr>
+                <td>@floor.FloorNumber</td>
+                <td>@floor.RoomsCount</td>
+                <td>@floor.OccupiedBeds</td>
+                <td>@floor.FreeBeds</td>
+                <td>@floor.TotalBeds</td>
+            </tr>
+        }
+
+    </table>
+</div>

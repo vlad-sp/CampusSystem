@@ -10,5 +10,7 @@
         public ICollection<Floor> Floors { get; set; }
 
         public ICollection<Room> Rooms { get; set; }
+
+        public User UserInfo { get; set; }
     }
 }

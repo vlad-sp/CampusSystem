@@ -34,9 +34,9 @@
             return this.rooms.All().Where(x => x.FloorId == floorId && x.HasBalcon == hasBalcon);
         }
 
-        public IQueryable<Room> GetRoomsByFloorId(int floorId)
+        public IQueryable<Room> GetFreeRoomsByFloorId(int floorId)
         {
-            return this.rooms.All().Where(x => x.FloorId == floorId);
+            return this.rooms.All().Where(x => x.FloorId == floorId && (x.BedsCount - x.Students.Count) > 0);
         }
 
         public Room AssignUserFoorRoom(int id, string userId)

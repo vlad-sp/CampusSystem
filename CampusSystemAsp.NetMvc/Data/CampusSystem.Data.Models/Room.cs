@@ -1,6 +1,7 @@
 ﻿namespace CampusSystem.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
 
     public class Room : BaseModel<int>
@@ -18,7 +19,14 @@
 
         public bool HasBalcon { get; set; }
 
-        public int FreeBeds { get; set; }
+        [NotMapped]
+        public int FreeBeds
+        {
+            get
+            {
+                return this.BedsCount - this.Students.Count;
+            }
+        }
 
         public int FloorId { get; set; }
 
