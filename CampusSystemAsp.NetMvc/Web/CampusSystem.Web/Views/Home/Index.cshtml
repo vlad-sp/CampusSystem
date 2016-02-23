@@ -20,7 +20,7 @@
             <blockquote>
                 <h4>@news.Title</h4>
                 <p>@news.Content</p>
-                <small>Published: <cite title="Source Title">@news.CreatedOn</cite></small>
+                <small>Published: @Html.DisplayFor(x=>news.CreatedOn)</small>
             </blockquote>
         </div>
     }

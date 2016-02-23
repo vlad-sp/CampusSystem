@@ -428,9 +428,11 @@
     <Content Include="Views\BookRoom\_IndexFloors.cshtml" />
     <Content Include="Views\BookRoom\_IndexRooms.cshtml" />
     <Content Include="Views\BookRoom\BookRoom.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\ViewModels\Building\" />
     <Folder Include="Areas\Administration\ViewModels\Student\" />
   </ItemGroup>
   <ItemGroup>
