@@ -1,28 +1,27 @@
-namespace CampusSystem.Data.Migrations
+﻿namespace CampusSystem.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ModifiedRoomAndUser : DbMigration
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Rooms", "UserId", "dbo.AspNetUsers");
-            DropIndex("dbo.Rooms", new[] { "UserId" });
-            AddColumn("dbo.AspNetUsers", "RoomId", c => c.Int(nullable: false));
-            CreateIndex("dbo.AspNetUsers", "RoomId");
-            AddForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms", "Id", cascadeDelete: true);
-            DropColumn("dbo.Rooms", "UserId");
+           this.DropForeignKey("dbo.Rooms", "UserId", "dbo.AspNetUsers");
+           this.DropIndex("dbo.Rooms", new[] { "UserId" });
+           this.AddColumn("dbo.AspNetUsers", "RoomId", c => c.Int(nullable: false));
+           this.CreateIndex("dbo.AspNetUsers", "RoomId");
+           this.AddForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms", "Id", cascadeDelete: true);
+           this.DropColumn("dbo.Rooms", "UserId");
         }
-        
+
         public override void Down()
         {
-            AddColumn("dbo.Rooms", "UserId", c => c.String(maxLength: 128));
-            DropForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms");
-            DropIndex("dbo.AspNetUsers", new[] { "RoomId" });
-            DropColumn("dbo.AspNetUsers", "RoomId");
-            CreateIndex("dbo.Rooms", "UserId");
-            AddForeignKey("dbo.Rooms", "UserId", "dbo.AspNetUsers", "Id");
+           this.AddColumn("dbo.Rooms", "UserId", c => c.String(maxLength: 128));
+           this.DropForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms");
+           this.DropIndex("dbo.AspNetUsers", new[] { "RoomId" });
+           this.DropColumn("dbo.AspNetUsers", "RoomId");
+           this.CreateIndex("dbo.Rooms", "UserId");
+           this.AddForeignKey("dbo.Rooms", "UserId", "dbo.AspNetUsers", "Id");
         }
     }
 }

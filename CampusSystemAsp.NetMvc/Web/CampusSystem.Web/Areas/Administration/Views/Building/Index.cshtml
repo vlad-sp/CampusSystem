@@ -1,1 +1,52 @@
-﻿
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.Building.IndexBuildingViewModel
+
+@{
+    ViewBag.Title = "Building statistics";
+}
+
+<h1 class="well">Building statistics section</h1>
+<br />
+
+@if (TempData["Notification"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Notification"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Buildings, Model.Buildings.Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() }), "Choose building", new { @class = "form-control", data_action = "building" })
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div id="statistics" class="col-md-10">
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("select[data-action='building']").on("change", function () {
+            $.post("/Administration/Building/LoadBuildingInfo", { id: $(this).val() },
+                function (data) {
+                    console.log("Loading building info ...");
+                    $("#statistics").html(data);
+
+                    $("button[data-action='save']").on("click", function () {
+                        var id = $(this).attr("data-id");
+                        $.post("/Administration/Building/UpdateHostName", { id: $(this).attr("data-id"), name: $("#Name" + $(this).attr("data-id")).val() }, function (data) {
+                            console.log("Host name updated");
+                            $("#editModal" + id).hide();
+                            $('.modal-backdrop').hide();
+                            window.location = "Building"
+                        })
+                    })
+                });
+        });
+    </script>
+}

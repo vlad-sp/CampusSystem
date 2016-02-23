@@ -62,21 +62,9 @@
     <Compile Include="CampusSystemDbContext.cs" />
     <Compile Include="Migrations\201602131200552_InitialCreate.cs" />
     <Compile Include="Migrations\201602201318584_UpdateModels.cs" />
-    <Compile Include="Migrations\201602201318584_UpdateModels.Designer.cs">
-      <DependentUpon>201602201318584_UpdateModels.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602211620029_AddedMissingPropertyToModels.cs" />
-    <Compile Include="Migrations\201602211620029_AddedMissingPropertyToModels.Designer.cs">
-      <DependentUpon>201602211620029_AddedMissingPropertyToModels.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602221154015_ModifiedRoomAndUser.cs" />
-    <Compile Include="Migrations\201602221154015_ModifiedRoomAndUser.Designer.cs">
-      <DependentUpon>201602221154015_ModifiedRoomAndUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602221158417_ModifiedRoomAndUser2.cs" />
-    <Compile Include="Migrations\201602221158417_ModifiedRoomAndUser2.Designer.cs">
-      <DependentUpon>201602221158417_ModifiedRoomAndUser2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,20 +86,6 @@
       <Project>{d49fe423-17b6-4a4e-b3e8-54bf4dc70b94}</Project>
       <Name>CampusSystem.Data.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602201318584_UpdateModels.resx">
-      <DependentUpon>201602201318584_UpdateModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602211620029_AddedMissingPropertyToModels.resx">
-      <DependentUpon>201602211620029_AddedMissingPropertyToModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602221154015_ModifiedRoomAndUser.resx">
-      <DependentUpon>201602221154015_ModifiedRoomAndUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602221158417_ModifiedRoomAndUser2.resx">
-      <DependentUpon>201602221158417_ModifiedRoomAndUser2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

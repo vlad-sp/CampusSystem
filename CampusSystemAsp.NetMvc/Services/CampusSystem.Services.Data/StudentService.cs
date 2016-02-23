@@ -1,9 +1,10 @@
 ﻿namespace CampusSystem.Services.Data
 {
     using System.Linq;
+
     using CampusSystem.Data.Common;
     using CampusSystem.Data.Models;
-    using Microsoft.AspNet.Identity;
+    using Contracts;
 
     public class StudentService : IStudentService
     {
@@ -17,7 +18,6 @@
         public IQueryable<User> GetAllStudents()
         {
             return this.students.All();
-
         }
     }
 }

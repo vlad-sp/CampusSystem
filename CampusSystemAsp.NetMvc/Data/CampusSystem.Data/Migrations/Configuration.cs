@@ -48,7 +48,6 @@
                 userManager.AddToRole(admin.Id, "Administrator");
             }
 
-
             if (!context.News.Any())
             {
                 var newsList = new List<News>()

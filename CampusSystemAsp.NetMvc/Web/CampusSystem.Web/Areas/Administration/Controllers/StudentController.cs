@@ -1,15 +1,14 @@
 ﻿namespace CampusSystem.Web.Areas.Administration.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Services.Data;
 
+    using Services.Data.Contracts;
+
+    [Authorize(Roles = "Administrator")]
     public class StudentController : Controller
     {
-        private const string EmptyValue = "Not set yet";
         private readonly IStudentService students;
-
 
         public StudentController(IStudentService students)
         {

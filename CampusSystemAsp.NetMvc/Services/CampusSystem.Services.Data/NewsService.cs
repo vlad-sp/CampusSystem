@@ -1,10 +1,10 @@
 ﻿namespace CampusSystem.Services.Data
 {
-    using System;
     using System.Linq;
 
     using CampusSystem.Data.Common;
     using CampusSystem.Data.Models;
+    using Contracts;
 
     public class NewsService : INewsService
     {

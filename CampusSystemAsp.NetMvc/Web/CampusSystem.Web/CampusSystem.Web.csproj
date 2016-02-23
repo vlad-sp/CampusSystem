@@ -202,6 +202,10 @@
     <Compile Include="Areas\Administration\Controllers\BuildingController.cs" />
     <Compile Include="Areas\Administration\Controllers\NewsController.cs" />
     <Compile Include="Areas\Administration\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\BuildingInfoViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\FloorBuildingViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\IndexBuildingViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\RoomBuildingViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\IndexNewsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\InputNewsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\NewsViewModel.cs" />
@@ -324,6 +328,8 @@
     <Content Include="Areas\Administration\Views\News\_CreateNewsPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Building\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Building\_BuildingInfoPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BuildingInfoViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
     <Content Include="Scripts\i18n\grid.locale-bg.js" />
@@ -432,7 +438,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\ViewModels\Building\" />
     <Folder Include="Areas\Administration\ViewModels\Student\" />
   </ItemGroup>
   <ItemGroup>

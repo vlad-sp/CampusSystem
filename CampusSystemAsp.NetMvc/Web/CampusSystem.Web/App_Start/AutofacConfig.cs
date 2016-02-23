@@ -9,7 +9,7 @@
     using Controllers;
     using Data;
     using Data.Common;
-    using Services.Data;
+    using Services.Data.Contracts;
     using Services.Web;
 
     public static class AutofacConfig
@@ -51,7 +51,8 @@
             builder.Register(x => new HttpCacheService())
                .As<ICacheService>()
                .InstancePerRequest();
-            //builder.Register(x => new IdentifierProvider())
+
+            // builder.Register(x => new IdentifierProvider())
             //   .As<IIdentifierProvider>()
             //   .InstancePerRequest();
             builder.RegisterGeneric(typeof(DbRepository<>))

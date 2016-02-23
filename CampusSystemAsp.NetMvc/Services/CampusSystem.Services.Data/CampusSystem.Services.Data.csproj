@@ -60,11 +60,11 @@
   <ItemGroup>
     <Compile Include="BuildingService.cs" />
     <Compile Include="FloorService.cs" />
-    <Compile Include="IBuildingService.cs" />
-    <Compile Include="IFloorService.cs" />
-    <Compile Include="INewsService.cs" />
-    <Compile Include="IRoomService.cs" />
-    <Compile Include="IStudentService.cs" />
+    <Compile Include="Contracts\IBuildingService.cs" />
+    <Compile Include="Contracts\IFloorService.cs" />
+    <Compile Include="Contracts\INewsService.cs" />
+    <Compile Include="Contracts\IRoomService.cs" />
+    <Compile Include="Contracts\IStudentService.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomService.cs" />

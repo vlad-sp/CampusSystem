@@ -20,6 +20,7 @@
                 </button>
                 @Html.ActionLink("Campus Student System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             @if (User.IsInRole("Student"))
             {
                 <div class="navbar-collapse collapse">
@@ -63,7 +64,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Campus Student System v0.0.1</p>
         </footer>
     </div>
 

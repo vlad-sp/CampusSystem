@@ -9,6 +9,12 @@
     <p class="lead">Here you can find everything about student campus. Where you can live, how will you pay, find latest news for your campus.</p>
 </div>
 
+@if (TempData["Notification"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Notification"]
+    </div>
+}
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">

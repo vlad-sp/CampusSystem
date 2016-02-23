@@ -2,9 +2,10 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using Data.Models;
     using Infrastructure.Mapping;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.News;
     using Web.Controllers;
 
@@ -31,7 +32,8 @@
         public ActionResult EditNews(InputNewsViewModel model)
         {
             this.news.UpdateNews(this.Mapper.Map<News>(model));
-            return this.RedirectToAction("Index");
+            this.TempData["EditNews"] = "News edited successfully!";
+            return this.RedirectToAction("Index", "Building");
         }
 
         public ActionResult CreateNews(IndexNewsViewModel model)

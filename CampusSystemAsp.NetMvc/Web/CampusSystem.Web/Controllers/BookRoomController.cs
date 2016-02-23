@@ -2,9 +2,12 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Services.Data;
-    using ViewModels.BookRoom;
     using Microsoft.AspNet.Identity;
+
+    using Services.Data.Contracts;
+    using ViewModels.BookRoom;
+
+    [Authorize]
     public class BookRoomController : BaseController
     {
         private readonly IBuildingService buildings;

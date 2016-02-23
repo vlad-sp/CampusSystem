@@ -1,16 +1,15 @@
 ﻿namespace CampusSystem.Services.Data
 {
-    using System;
     using System.Linq;
     using CampusSystem.Data.Common;
     using CampusSystem.Data.Models;
+    using Contracts;
 
     public class RoomService : IRoomService
     {
         private readonly IDbRepository<Room> rooms;
         private readonly IDbRepository<Floor> floors;
         private readonly IRepository<User> students;
-
 
         public RoomService(IDbRepository<Room> rooms, IDbRepository<Floor> floors, IRepository<User> students)
         {
@@ -47,6 +46,11 @@
             room.Students.Add(student);
             this.rooms.Save();
             return room;
+        }
+
+        public IQueryable<Room> GetRoomsByBuildingId(int buildingId)
+        {
+            return this.rooms.All().Where(x => x.Floor.BuildingId == buildingId);
         }
     }
 }

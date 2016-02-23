@@ -1,10 +1,17 @@
 ﻿@model CampusSystem.Web.Areas.Administration.ViewModels.News.IndexNewsViewModel
 
+
+
 @{
     ViewBag.Title = "News Administration";
 }
 
-
+@if (TempData["EditNews"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EditNews"]
+    </div>
+}
 
 <div class="row">
    <div class="col-md-offset-2 col-md-8">
@@ -47,6 +54,7 @@
                 console.log("News updated");
                 $("#editModal" +id).hide();
                 $('.modal-backdrop').hide();
+                window.location = "News"
             })
         })
     </script>
