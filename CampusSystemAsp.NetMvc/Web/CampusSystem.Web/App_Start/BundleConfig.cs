@@ -19,6 +19,15 @@
             bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
                         "~/Scripts/jquery.jqGrid*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/buildingInfo").Include(
+                       "~/Scripts/Site/buildingInfoPage.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/newsInfo").Include(
+                       "~/Scripts/Site/newsInfoPage.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bookRoom").Include(
+                       "~/Scripts/Site/bookRoomPage.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));

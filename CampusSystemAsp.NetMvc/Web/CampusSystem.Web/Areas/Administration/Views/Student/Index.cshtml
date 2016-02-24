@@ -1,6 +1,6 @@
 ﻿<h3>Student administration page</h3>
 
-<table id="list" class="scroll" cellpadding="0" cellspacing="0"></table>
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"> </table>
 
 <div id="pager" class="scroll" style="text-align:center;"></div>
 
@@ -14,7 +14,8 @@
     <script src="~/Scripts/i18n/grid.locale-en.js"></script>
     <script>
         $(document).ready(function myfunction() {
-            $.jgrid.defaults.width = 1100;
+            $.jgrid.defaults.width = 1000;
+            $.jgrid.defaults.height - 500;
             $.jgrid.defaults.responsive = true;
             $.jgrid.defaults.styleUI = 'Bootstrap';
 
@@ -35,14 +36,14 @@
                       { name: 'FloorNumber', index: 'FloorNumber', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
                       { name: 'BuildingName', index: 'BuildingName', width: 150, formatoptions: { defaultValue: 'No Value Set' } }
                 ],
-                rowNum: 10,
+                rowNum: 5,
                 rownumbers: true,
                 rownumWidth: 30,
                 pager: jQuery('#pager'),
                 loadonce: true,
             });
 
-            jQuery("#list").jqGrid('navGrid', '#pager', { edit: true, add: true, del: true });
+            jQuery("#list").jqGrid('navGrid', '#pager', { add: true, del: true });
         });
 
 
