@@ -1,13 +1,12 @@
-namespace CampusSystem.Data.Migrations
+﻿namespace CampusSystem.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class RoomFreeBedsCountFixed2 : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
+            this.CreateTable(
                 "dbo.ApartmentBuildings",
                 c => new
                     {
@@ -22,8 +21,8 @@ namespace CampusSystem.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Floors",
                 c => new
                     {
@@ -39,8 +38,8 @@ namespace CampusSystem.Data.Migrations
                 .ForeignKey("dbo.ApartmentBuildings", t => t.BuildingId, cascadeDelete: true)
                 .Index(t => t.BuildingId)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Rooms",
                 c => new
                     {
@@ -59,8 +58,8 @@ namespace CampusSystem.Data.Migrations
                 .ForeignKey("dbo.Floors", t => t.FloorId, cascadeDelete: true)
                 .Index(t => t.FloorId)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -90,8 +89,8 @@ namespace CampusSystem.Data.Migrations
                 .ForeignKey("dbo.Rooms", t => t.RoomId)
                 .Index(t => t.RoomId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
                     {
@@ -103,8 +102,8 @@ namespace CampusSystem.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
                     {
@@ -115,8 +114,8 @@ namespace CampusSystem.Data.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
                     {
@@ -128,8 +127,8 @@ namespace CampusSystem.Data.Migrations
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.News",
                 c => new
                     {
@@ -143,8 +142,8 @@ namespace CampusSystem.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -153,40 +152,39 @@ namespace CampusSystem.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
         }
-        
+
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Rooms", "FloorId", "dbo.Floors");
-            DropForeignKey("dbo.Floors", "BuildingId", "dbo.ApartmentBuildings");
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.News", new[] { "IsDeleted" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "RoomId" });
-            DropIndex("dbo.Rooms", new[] { "IsDeleted" });
-            DropIndex("dbo.Rooms", new[] { "FloorId" });
-            DropIndex("dbo.Floors", new[] { "IsDeleted" });
-            DropIndex("dbo.Floors", new[] { "BuildingId" });
-            DropIndex("dbo.ApartmentBuildings", new[] { "IsDeleted" });
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.News");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Rooms");
-            DropTable("dbo.Floors");
-            DropTable("dbo.ApartmentBuildings");
+           this.DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+           this.DropForeignKey("dbo.AspNetUsers", "RoomId", "dbo.Rooms");
+           this.DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+           this.DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+           this.DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+           this.DropForeignKey("dbo.Rooms", "FloorId", "dbo.Floors");
+           this.DropForeignKey("dbo.Floors", "BuildingId", "dbo.ApartmentBuildings");
+           this.DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+           this.DropIndex("dbo.News", new[] { "IsDeleted" });
+           this.DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+           this.DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+           this.DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+           this.DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+           this.DropIndex("dbo.AspNetUsers", "UserNameIndex");
+           this.DropIndex("dbo.AspNetUsers", new[] { "RoomId" });
+           this.DropIndex("dbo.Rooms", new[] { "IsDeleted" });
+           this.DropIndex("dbo.Rooms", new[] { "FloorId" });
+           this.DropIndex("dbo.Floors", new[] { "IsDeleted" });
+           this.DropIndex("dbo.Floors", new[] { "BuildingId" });
+           this.DropIndex("dbo.ApartmentBuildings", new[] { "IsDeleted" });
+           this.DropTable("dbo.AspNetRoles");
+           this.DropTable("dbo.News");
+           this.DropTable("dbo.AspNetUserRoles");
+           this.DropTable("dbo.AspNetUserLogins");
+           this.DropTable("dbo.AspNetUserClaims");
+           this.DropTable("dbo.AspNetUsers");
+           this.DropTable("dbo.Rooms");
+           this.DropTable("dbo.Floors");
+           this.DropTable("dbo.ApartmentBuildings");
         }
     }
 }

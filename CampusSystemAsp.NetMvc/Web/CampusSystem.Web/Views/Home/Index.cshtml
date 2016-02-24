@@ -4,9 +4,9 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Campus System</h1>
-    <p class="lead">Here you can find everything about student campus. Where you can live, how will you pay, find latest news for your campus.</p>
+<div class="well">
+    <h1 class="text-center">Campus System</h1>
+    <p class="lead text-center">Here you can find everything about student campus. Book a room, find latest news for your campus.</p>
 </div>
 
 @if (TempData["Notification"] != null)
@@ -18,13 +18,13 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h3>Latest news</h3>
+        <h2>Latest news</h2>
     </div>
     @foreach (var news in Model.News)
     {
         <div class="col-md-8 col-md-offset-2">
-            <blockquote>
-                <h4>@news.Title</h4>
+            <blockquote class="well">
+                <h3>@news.Title</h3>
                 <p>@news.Content</p>
                 <small>Published: @Html.DisplayFor(x=>news.CreatedOn)</small>
             </blockquote>

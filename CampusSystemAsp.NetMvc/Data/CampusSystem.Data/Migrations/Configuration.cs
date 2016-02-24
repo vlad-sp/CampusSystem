@@ -98,12 +98,11 @@
                 {
                     for (int i = 1; i < 10; i++)
                     {
-                        floor.Rooms.Add(new Room() { RoomName = $"{floor.Id}{i}", BedsCount = random.Next(1,5), HasBalcon = false, Area = random.Next(30,51)});
+                        floor.Rooms.Add(new Room() { RoomName = $"{floor.Id}{i}", BedsCount = random.Next(1, 5), HasBalcon = false, Area = random.Next(30, 51) });
                     }
 
                     context.SaveChanges();
                 }
-
             }
         }
     }

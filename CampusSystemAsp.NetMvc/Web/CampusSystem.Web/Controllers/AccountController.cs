@@ -152,7 +152,7 @@
             if (this.ModelState.IsValid)
             {
                 var user = this.Mapper.Map<User>(model);
-                user.UserName = $"{user.FirstName} {user.LastName}";
+                user.UserName = user.Email;
 
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

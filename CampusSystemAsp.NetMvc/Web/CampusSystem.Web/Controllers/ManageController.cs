@@ -7,6 +7,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using Services.Data.Contracts;
     using ViewModels.Manage;
 
     [Authorize]
@@ -15,11 +16,13 @@
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
+        private readonly IStudentService students;
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
 
-        public ManageController()
+        public ManageController(IStudentService students)
         {
+            this.students = students;
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -86,13 +89,33 @@
                 : string.Empty;
 
             var userId = this.User.Identity.GetUserId();
+            var modelStudent = this.students.GetById(userId);
+
+            // TODO : Fix AutoMapper mapping
+            var mod = new StudentProfileViewModel()
+            {
+                FirstName = modelStudent.FirstName,
+                MiddleName = modelStudent.MiddleName,
+                LastName = modelStudent.LastName,
+                Email = modelStudent.Email,
+                University = modelStudent.University,
+                FacultyName = modelStudent.FacultyName,
+                FacultyNumber = modelStudent.FacultyNumber,
+                Course = modelStudent.Course,
+                GroupNumber = modelStudent.GroupNumber,
+                RoomName = modelStudent.Room.RoomName,
+                FloorNumber = modelStudent.Room.Floor.FloorNumber,
+                BuildingName = modelStudent.Room.Floor.Building.Name
+            };
+            var student = this.Mapper.Map<StudentProfileViewModel>(modelStudent);
             var model = new IndexViewModel
             {
                 HasPassword = this.HasPassword(),
                 PhoneNumber = await this.UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await this.UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await this.UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                Student = mod
             };
             return this.View(model);
         }
