@@ -16,8 +16,17 @@
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
+                        "~/Scripts/jquery.jqGrid*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/buildingInfo").Include(
+                       "~/Scripts/Site/buildingInfoPage.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/newsInfo").Include(
+                       "~/Scripts/Site/newsInfoPage.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bookRoom").Include(
+                       "~/Scripts/Site/bookRoomPage.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",

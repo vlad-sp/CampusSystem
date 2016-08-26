@@ -14,5 +14,7 @@
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public StudentProfileViewModel Student { get; set; }
     }
 }

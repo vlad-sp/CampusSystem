@@ -1,0 +1,34 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.Building.IndexBuildingViewModel
+
+@{
+    ViewBag.Title = "Building statistics";
+}
+
+<h1 class="well">Building statistics section</h1>
+<br />
+
+@if (TempData["Notification"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Notification"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Buildings, Model.Buildings.Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() }), "Choose building", new { @class = "form-control", data_action = "building" })
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div id="statistics" class="col-md-10">
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/buildingInfo");
+}

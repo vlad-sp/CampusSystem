@@ -1,0 +1,44 @@
+﻿@model CampusSystem.Web.ViewModels.BookRoom.IndexBookRoomViewModel
+@{
+    ViewBag.Title = "Booking a room";
+}
+
+<h2>Book a room</h2>
+
+@if (Model.UserInfo.RoomId != null)
+{
+    <div>
+        <h2> You have already booked Room @Model.UserInfo.Room.RoomName at @Model.UserInfo.Room.Floor.Building.Name</h2>
+    </div>
+}
+else {
+
+    using (Html.BeginForm("BookRoom", "BookRoom", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Buildings, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Buildings, Model.Buildings.Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() }), "Choose building", new { @class = "form-control", data_action = "building" })
+            </div>
+        </div>
+        <br />
+        <div id="floors" class="form-group">
+
+        </div>
+        <br />
+
+        <div id="rooms" class="form-group">
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Book the room" />
+            </div>
+        </div>
+    }
+
+    @section Scripts{
+     @Scripts.Render("~/bundles/bookRoom");
+    }
+}

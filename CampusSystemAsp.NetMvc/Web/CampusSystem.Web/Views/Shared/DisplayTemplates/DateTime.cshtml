@@ -1,0 +1,58 @@
+﻿@model DateTime
+
+
+@GetAgoMessage(Model)
+
+
+@functions {
+    private string GetAgoMessage(DateTime myDate)
+    {
+        const int SECOND = 1;
+        const int MINUTE = 60 * SECOND;
+        const int HOUR = 60 * MINUTE;
+        const int DAY = 24 * HOUR;
+        const int MONTH = 30 * DAY;
+
+        var ts = new TimeSpan(DateTime.Now.Ticks - myDate.Ticks);
+        double delta = Math.Abs(ts.TotalSeconds);
+
+        if (delta < 1 * MINUTE)
+        {
+            return ts.Seconds == 1 ? "before" : ts.Seconds + " seconds";
+        }
+        if (delta < 2 * MINUTE)
+        {
+            return "before one minute";
+        }
+        if (delta < 45 * MINUTE)
+        {
+            return "before " + ts.Minutes + " minutes";
+        }
+        if (delta < 90 * MINUTE)
+        {
+            return "before one hour";
+        }
+        if (delta < 24 * HOUR)
+        {
+            return "before " + ts.Hours + " hours";
+        }
+        if (delta < 48 * HOUR)
+        {
+            return "yesterday";
+        }
+        if (delta < 30 * DAY)
+        {
+            return "before " + ts.Days + " days";
+        }
+        if (delta < 12 * MONTH)
+        {
+            int months = Convert.ToInt32(Math.Floor((double) ts.Days / 30));
+            return months <= 1 ? "before one month" : "before " + months + " months";
+        }
+        else
+        {
+            int years = Convert.ToInt32(Math.Floor((double) ts.Days / 365));
+            return years <= 1 ? "before one year" : "before " + years + " years";
+        }
+    }
+}

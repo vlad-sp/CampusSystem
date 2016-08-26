@@ -31,7 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,15 +58,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingService.cs" />
+    <Compile Include="FloorService.cs" />
+    <Compile Include="Contracts\IBuildingService.cs" />
+    <Compile Include="Contracts\IFloorService.cs" />
+    <Compile Include="Contracts\INewsService.cs" />
+    <Compile Include="Contracts\IRoomService.cs" />
+    <Compile Include="Contracts\IStudentService.cs" />
+    <Compile Include="NewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomService.cs" />
+    <Compile Include="StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\CampusSystem.Data.Common\CampusSystem.Data.Common.csproj">
+      <Project>{9b8f5cc6-5223-4661-b3cb-18a771905281}</Project>
+      <Name>CampusSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\CampusSystem.Data.Models\CampusSystem.Data.Models.csproj">
+      <Project>{d49fe423-17b6-4a4e-b3e8-54bf4dc70b94}</Project>
+      <Name>CampusSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\CampusSystem.Data\CampusSystem.Data.csproj">
+      <Project>{812c959d-9a32-47b0-a3dc-ddc426765f01}</Project>
+      <Name>CampusSystem.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

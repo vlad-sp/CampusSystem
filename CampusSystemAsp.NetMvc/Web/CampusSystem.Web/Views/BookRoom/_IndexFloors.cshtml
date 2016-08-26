@@ -1,0 +1,9 @@
+﻿@model CampusSystem.Web.ViewModels.BookRoom.IndexBookRoomViewModel
+
+@Html.LabelFor(m => m.Floors, new { @class = "col-md-2 control-label" })
+<div class="col-md-10">
+    @Html.DropDownListFor(x => x.Floors, Model.Floors.Select(x => new SelectListItem() { Text = x.FloorNumber.ToString(), Value = x.Id.ToString() }), "Choose floor", new { @class="form-control", data_action = "floor" })
+</div>
+<br />
+
+

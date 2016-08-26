@@ -61,6 +61,12 @@
   <ItemGroup>
     <Compile Include="CampusSystemDbContext.cs" />
     <Compile Include="Migrations\201602131200552_InitialCreate.cs" />
+    <Compile Include="Migrations\201602201318584_UpdateModels.cs" />
+    <Compile Include="Migrations\201602211620029_AddedMissingPropertyToModels.cs" />
+    <Compile Include="Migrations\201602221154015_ModifiedRoomAndUser.cs" />
+    <Compile Include="Migrations\201602221158417_ModifiedRoomAndUser2.cs" />
+    <Compile Include="Migrations\201602231854181_RoomFreeBedsCountFixed.cs" />
+    <Compile Include="Migrations\201602231902160_RoomFreeBedsCountFixed2.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

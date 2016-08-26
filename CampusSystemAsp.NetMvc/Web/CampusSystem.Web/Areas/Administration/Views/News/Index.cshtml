@@ -1,0 +1,42 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.News.IndexNewsViewModel
+
+
+
+@{
+    ViewBag.Title = "News Administration";
+}
+
+@if (TempData["EditNews"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EditNews"]
+    </div>
+}
+
+<div class="row">
+   <div class="col-md-offset-2 col-md-8">
+       <h2>News Admimistration</h2>
+       <a href="#" class="btn btn-primary" id="btnPartial">Add News</a>
+       <div id="partial" style="display:none">
+            @Html.Partial("_CreateNewsPartial", @Model.InputModel)
+       </div>
+   </div>
+</div>
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        @for (int i = 0; i < Model.News.Count; i++)
+        {
+            <div>
+                <h3>@Model.News[i].Title</h3> @Html.EditorFor(x => x.News[i], new {data_id = @Model.News[i].Id })
+            </div>
+            <div>
+                <p>@Model.News[i].Content</p>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+   @Scripts.Render("~/bundles/newsInfo")
+}

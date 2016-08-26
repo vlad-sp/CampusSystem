@@ -1,7 +1,7 @@
 ﻿namespace CampusSystem.Data.Common
 {
     using System.Linq;
-    using CampusSystem.Data.Common.Models;
+    using Models;
 
     public interface IDbRepository<T> : IDbRepository<T, int>
         where T : BaseModel<int>
@@ -16,6 +16,23 @@
         IQueryable<T> AllWithDeleted();
 
         T GetById(TKey id);
+
+        void Add(T entity);
+
+        void Delete(T entity);
+
+        void HardDelete(T entity);
+
+        void Save();
+    }
+
+    public interface IDbRepositoryUser<T>
+    {
+        IQueryable<T> All();
+
+        IQueryable<T> AllWithDeleted();
+
+        T GetById(string id);
 
         void Add(T entity);
 

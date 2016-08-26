@@ -1,0 +1,51 @@
+﻿<h3>Student administration page</h3>
+
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"> </table>
+
+<div id="pager" class="scroll" style="text-align:center;"></div>
+
+@section Styles{
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/jquery.jqGrid.min.js"></script>
+    <script src="~/Scripts/i18n/grid.locale-en.js"></script>
+    <script>
+        $(document).ready(function myfunction() {
+            $.jgrid.defaults.width = 1000;
+            $.jgrid.defaults.height - 500;
+            $.jgrid.defaults.responsive = true;
+            $.jgrid.defaults.styleUI = 'Bootstrap';
+
+            $('#list').jqGrid({
+                caption: "StudentDetails",
+                url: '/Administration/Student/LoadGrid',
+                datatype: "json",
+                contentType: "application/json; charset-utf-8",
+                mtype: 'GET',
+                colNames: ['First Name', 'Last Name', 'Course', 'Group number', 'Faculty Name', 'Room number', 'Floor number', 'Building name'],
+                colModel: [
+                      { name: 'FirstName', index: 'FirstName', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'LastName', index: 'LastName', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'Course', index: 'Course', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'GroupName', index: 'GroupName', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'FacultyName', index: 'FacultyName', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'RoomNumber', index: 'RoomNumber', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'FloorNumber', index: 'FloorNumber', width: 150, formatoptions: { defaultValue: 'No Value Set' } },
+                      { name: 'BuildingName', index: 'BuildingName', width: 150, formatoptions: { defaultValue: 'No Value Set' } }
+                ],
+                rowNum: 5,
+                rownumbers: true,
+                rownumWidth: 30,
+                pager: jQuery('#pager'),
+                loadonce: true,
+            });
+
+            jQuery("#list").jqGrid('navGrid', '#pager', { add: true, del: true });
+        });
+
+
+    </script>
+}

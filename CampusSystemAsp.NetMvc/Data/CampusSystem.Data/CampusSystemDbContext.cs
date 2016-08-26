@@ -14,6 +14,14 @@
         {
         }
 
+        public IDbSet<Room> Rooms { get; set; }
+
+        public IDbSet<Floor> Floors { get; set; }
+
+        public IDbSet<ApartmentBuilding> AppartmentBuildings { get; set; }
+
+        public IDbSet<News> News { get; set; }
+
         public static CampusSystemDbContext Create()
         {
             return new CampusSystemDbContext();
