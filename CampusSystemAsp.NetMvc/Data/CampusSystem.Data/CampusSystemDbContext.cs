@@ -22,6 +22,10 @@
 
         public IDbSet<News> News { get; set; }
 
+        public IDbSet<Consumption> Consumptions { get; set; }
+
+        public IDbSet<ConsumptionPrice> ConsumptionPrices { get; set; }
+
         public static CampusSystemDbContext Create()
         {
             return new CampusSystemDbContext();

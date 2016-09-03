@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApartmentBuilding.cs" />
+    <Compile Include="Consumption.cs" />
+    <Compile Include="ConsumptionPrice.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

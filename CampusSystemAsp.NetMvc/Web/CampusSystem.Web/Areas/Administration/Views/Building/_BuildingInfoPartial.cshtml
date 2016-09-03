@@ -10,7 +10,7 @@
         <br />
         Host name : @Model.Info.CampusHostName
         <br />
-        @Html.EditorFor(x => x.Info)
+        @Html.EditorFor(x => x.Info, new { data_id = @Model.Info.Id })
     </div>
 </div>
 
