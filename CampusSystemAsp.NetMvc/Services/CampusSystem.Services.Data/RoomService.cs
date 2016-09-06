@@ -1,5 +1,6 @@
 ﻿namespace CampusSystem.Services.Data
 {
+    using System;
     using System.Linq;
     using CampusSystem.Data.Common;
     using CampusSystem.Data.Models;
@@ -51,6 +52,14 @@
         public IQueryable<Room> GetRoomsByBuildingId(int buildingId)
         {
             return this.rooms.All().Where(x => x.Floor.BuildingId == buildingId);
+        }
+
+        public void LeaveRoom(int id, string userId)
+        {
+            var room = this.rooms.GetById(id);
+            var student = this.students.GetById(userId);
+            room.Students.Remove(student);
+            this.rooms.Save();
         }
     }
 }

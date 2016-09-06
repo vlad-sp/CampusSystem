@@ -9,6 +9,7 @@
         public Room()
         {
             this.Students = new HashSet<User>();
+            this.Consumptions = new HashSet<Consumption>();
         }
 
         public string RoomName { get; set; }
@@ -31,6 +32,8 @@
         public int FloorId { get; set; }
 
         public virtual Floor Floor { get; set; }
+
+        public virtual ICollection<Consumption> Consumptions { get; set; }
 
         public virtual ICollection<User> Students { get; set; }
     }

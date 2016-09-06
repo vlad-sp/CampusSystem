@@ -55,5 +55,12 @@
 
             return this.View();
         }
+
+        public ActionResult LeaveRoom(int id)
+        {
+            var userId = this.User.Identity.GetUserId();
+            this.rooms.LeaveRoom(id, userId);
+            return this.RedirectToAction("Index");
+        }
     }
 }

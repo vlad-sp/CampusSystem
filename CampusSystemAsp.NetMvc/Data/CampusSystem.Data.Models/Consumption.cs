@@ -12,6 +12,8 @@
 
         public double Heating { get; set; }
 
+        public string Month { get; set; }
+
         public int RoomId { get; set; }
 
         public virtual Room Room { get; set; }

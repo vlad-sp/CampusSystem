@@ -8,7 +8,9 @@
 @if (Model.UserInfo.RoomId != null)
 {
     <div>
-        <h2> You have already booked Room @Model.UserInfo.Room.RoomName at @Model.UserInfo.Room.Floor.Building.Name</h2>
+        <h2> You have already booked Room @Model.UserInfo.Room.RoomName at @Model.UserInfo.Room.Floor.Building.Name.</h2>
+        @*@Html.ActionLink("Leave room", "LeaveRoom", "BookRoom", null, new { @class= "btn btn-primary"})*@
+        @Ajax.ActionLink("Leave room", "LeaveRoom", "BookRoom", new { id = Model.UserInfo.RoomId }, new AjaxOptions { HttpMethod = "Post", }, new { @class = "btn btn-primary"})
     </div>
 }
 else {

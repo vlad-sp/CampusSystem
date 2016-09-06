@@ -16,5 +16,7 @@
         IQueryable<Room> GetFreeRoomsByFloorId(int floorId);
 
         Room AssignUserFoorRoom(int id, string userId);
+
+        void LeaveRoom(int id, string userId);
     }
 }

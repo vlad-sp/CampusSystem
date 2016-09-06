@@ -79,6 +79,10 @@
     <Compile Include="Migrations\201609031704590_AddConsumptionPricesTable.Designer.cs">
       <DependentUpon>201609031704590_AddConsumptionPricesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609061737418_CorectionOnRoomConsumptionRelationship.cs" />
+    <Compile Include="Migrations\201609061737418_CorectionOnRoomConsumptionRelationship.Designer.cs">
+      <DependentUpon>201609061737418_CorectionOnRoomConsumptionRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609031704590_AddConsumptionPricesTable.resx">
       <DependentUpon>201609031704590_AddConsumptionPricesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609061737418_CorectionOnRoomConsumptionRelationship.resx">
+      <DependentUpon>201609061737418_CorectionOnRoomConsumptionRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
