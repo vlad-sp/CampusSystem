@@ -206,6 +206,8 @@
     <Compile Include="Areas\Administration\ViewModels\Building\FloorBuildingViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Building\IndexBuildingViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Building\RoomBuildingViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\ConsumptionStatisticViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Building\ConsumptionViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\IndexNewsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\InputNewsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\News\NewsViewModel.cs" />
@@ -334,6 +336,7 @@
     <Content Include="Areas\Administration\Views\Student\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Building\_BuildingInfoPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BuildingInfoViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Building\_ConsumptionInfoPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
     <Content Include="Scripts\i18n\grid.locale-bg.js" />

@@ -1,5 +1,6 @@
 ﻿namespace CampusSystem.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
@@ -11,13 +12,17 @@
     public class BuildingController : BaseController
     {
         private readonly IBuildingService buildings;
+        private readonly IConsumptionService consumptions;
         private readonly IRoomService rooms;
+        private readonly IFloorService floors;
 
         private IndexBuildingViewModel viewModel = new IndexBuildingViewModel();
 
-        public BuildingController(IBuildingService buildings, IRoomService rooms)
+        public BuildingController(IBuildingService buildings, IRoomService rooms, IConsumptionService consumptions, IFloorService floors)
         {
             this.buildings = buildings;
+            this.consumptions = consumptions;
+            this.floors = floors;
             this.rooms = rooms;
         }
 
@@ -34,6 +39,26 @@
             var floors = this.buildings.GetFloorsById(id).To<FloorBuildingViewModel>().ToList();
             this.viewModel.Floors = floors;
             return this.PartialView("_BuildingInfoPartial", this.viewModel);
+        }
+
+        public ActionResult LoadConsumption(int id)
+        {
+            var rooms = this.floors.GetRoomsByFloorId(id).ToList();
+            var model = new ConsumptionStatisticViewModel();
+            model.Statistics = new List<ConsumptionViewModel>();
+            model.FloorNumber = this.floors.GetFloorNameById(id);
+
+            foreach (var room in rooms)
+            {
+                var consumption = this.consumptions.GetConsumptionsByRoomId(room.Id).To<ConsumptionViewModel>().FirstOrDefault();
+                if (consumption != null)
+                {
+                    consumption.RoomName = room.RoomName;
+                    model.Statistics.Add(consumption);
+                }
+            }
+
+            return this.PartialView("_ConsumptionInfoPartial", model);
         }
 
         public ActionResult UpdateHostName(int id, string name)

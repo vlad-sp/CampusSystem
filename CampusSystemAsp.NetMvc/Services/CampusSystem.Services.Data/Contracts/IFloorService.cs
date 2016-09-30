@@ -6,5 +6,9 @@
     public interface IFloorService
     {
         IQueryable<Floor> GetFloorByBuildingId(int buildingId);
+
+        IQueryable<Room> GetRoomsByFloorId(int floorId);
+
+        int GetFloorNameById(int floorId);
     }
 }

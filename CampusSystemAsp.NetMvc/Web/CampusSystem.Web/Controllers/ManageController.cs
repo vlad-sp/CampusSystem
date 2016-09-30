@@ -91,6 +91,7 @@
             var userId = this.User.Identity.GetUserId();
             var modelStudent = this.students.GetById(userId);
 
+
             // TODO : Fix AutoMapper mapping
             var mod = new StudentProfileViewModel()
             {
@@ -103,10 +104,22 @@
                 FacultyNumber = modelStudent.FacultyNumber,
                 Course = modelStudent.Course,
                 GroupNumber = modelStudent.GroupNumber,
-                RoomName = modelStudent.Room.RoomName,
-                FloorNumber = modelStudent.Room.Floor.FloorNumber,
-                BuildingName = modelStudent.Room.Floor.Building.Name
+               // RoomName = modelStudent.Room.RoomName,
+               // FloorNumber = modelStudent.Room.Floor.FloorNumber,
+               // BuildingName = modelStudent.Room.Floor.Building.Name
             };
+
+            if (modelStudent.Room == null)
+            {
+                mod.RoomName = "Not set yet";
+            }
+            else
+            {
+                mod.RoomName = modelStudent.Room.RoomName;
+                mod.FloorNumber = modelStudent.Room.Floor.FloorNumber;
+                mod.BuildingName = modelStudent.Room.Floor.Building.Name;
+            }
+
             var student = this.Mapper.Map<StudentProfileViewModel>(modelStudent);
             var model = new IndexViewModel
             {

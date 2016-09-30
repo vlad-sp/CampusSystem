@@ -11,12 +11,14 @@
         private readonly IDbRepository<Room> rooms;
         private readonly IDbRepository<Floor> floors;
         private readonly IRepository<User> students;
+        private readonly IDbRepository<Consumption> consumptions;
 
-        public RoomService(IDbRepository<Room> rooms, IDbRepository<Floor> floors, IRepository<User> students)
+        public RoomService(IDbRepository<Room> rooms, IDbRepository<Floor> floors, IRepository<User> students, IDbRepository<Consumption> consumptions)
         {
             this.rooms = rooms;
             this.floors = floors;
             this.students = students;
+            this.consumptions = consumptions;
         }
 
         public IQueryable<Room> GetAllFreeRooms(int betsCount)
@@ -60,6 +62,11 @@
             var student = this.students.GetById(userId);
             room.Students.Remove(student);
             this.rooms.Save();
+        }
+
+        public Consumption GetConsumptionByRoomId(int roomId)
+        {
+            return this.consumptions.All().Where(x => x.RoomId == roomId).OrderByDescending(x => x.Month).FirstOrDefault();
         }
     }
 }

@@ -52,9 +52,6 @@
                .As<ICacheService>()
                .InstancePerRequest();
 
-            // builder.Register(x => new IdentifierProvider())
-            //   .As<IIdentifierProvider>()
-            //   .InstancePerRequest();
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();

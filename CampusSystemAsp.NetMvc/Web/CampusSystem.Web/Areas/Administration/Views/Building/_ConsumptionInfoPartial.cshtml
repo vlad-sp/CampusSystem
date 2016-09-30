@@ -1,0 +1,26 @@
+﻿@model CampusSystem.Web.Areas.Administration.ViewModels.Building.ConsumptionStatisticViewModel
+
+<div class="col-md-12">
+    <h2>Consumption statistics - Floor @Model.FloorNumber</h2>
+    <table class="table table-bordered table-responsive text-center">
+        <tr>
+            <th class="text-center">Room number</th>
+            <th class="text-center">Month</th>
+            <th class="text-center">Electricity</th>
+            <th class="text-center">Heating</th>
+            <th class="text-center">Cold water</th>
+            <th class="text-center">Hot water</th>
+        </tr>
+        @foreach (var room in Model.Statistics)
+        {
+            <tr>
+                <td>@room.RoomName</td>
+                <td>@room.Month</td>
+                <td>@room.Electricity</td>
+                <td>@room.Heating</td>
+                <td>@room.ColdWater</td>
+                <td>@room.HotWater</td>
+            </tr>
+        }
+    </table>
+</div>

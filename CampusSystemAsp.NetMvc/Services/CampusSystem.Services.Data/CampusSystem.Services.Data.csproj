@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildingService.cs" />
+    <Compile Include="ConsumptionService.cs" />
+    <Compile Include="Contracts\IConsumptionService.cs" />
     <Compile Include="FloorService.cs" />
     <Compile Include="Contracts\IBuildingService.cs" />
     <Compile Include="Contracts\IFloorService.cs" />

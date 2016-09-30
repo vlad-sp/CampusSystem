@@ -23,6 +23,7 @@
             <th class="text-center">Occupied beds</th>
             <th class="text-center">Free beds</th>
             <th class="text-center">Total beds</th>
+            <th class="text-center">Consumption</th>
         </tr>
         @foreach (var floor in Model.Floors)
         {
@@ -32,6 +33,7 @@
                 <td>@floor.OccupiedBeds</td>
                 <td>@floor.FreeBeds</td>
                 <td>@floor.TotalBeds</td>
+                <td><input type="button" class="btn btn-primary consumptionStatistic" name="name" value="View Consumption" data-id ="@floor.Id" /></td>
             </tr>
         }
 
